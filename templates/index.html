@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <style>
+      .container {
+        width: 90%;
+        margin: 20px 5%;
+        display: inline-grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 10px;
+      }
+      .card-image {
+        object-fit: contain;
+        height: 20vh;
+        width: 40%;
+      }
+      .card-image > img {
+        width: 100% !important;
+        height: 100%;
+      }
+      h6 {
+        font-size: 14px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+      h4 {
+        font-size: 22px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        margin: 20px 5%;
+      }
+      .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .complete {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .done {
+        color: #00c853;
+      }
+      .not-done {
+        color: #e53935;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>My Todos : {{ numTodos }} todos in the list</h4>
+    <div class="container">
+      {% for todo in todos %}
+      <div class="card horizontal">
+        <div class="card-image">
+          <img src="{{ todo.image }}" />
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h6>
+              {{ todo.name }}
+            </h6>
+            <div class="complete">
+              <p>{{ todo.created.date() }}</p>
+              {% if todo.completed == True%}
+              <div>
+                <p class="done">complete</p>
+                <input type="checkbox" id="done" />
+              </div>
+              {% else %}
+              <div>
+                <p class="not-done">not complete</p>
+                <input type="checkbox" id="not-done" />
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
