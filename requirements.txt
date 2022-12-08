@@ -1,7 +1,7 @@
 appdirs==1.4.3
 attrs==19.1.0
 autopep8==1.4.4
-certifi==2019.3.9
+certifi==2022.12.7
 Click==7.0
 cloudinary==1.16.0
 dnspython==1.16.0
